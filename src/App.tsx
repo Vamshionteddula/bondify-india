@@ -3,7 +3,13 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
+import Landing from "./pages/Landing";
+import Dashboard from "./pages/Dashboard";
+import Trading from "./pages/Trading";
+import Portfolio from "./pages/Portfolio";
+import Analytics from "./pages/Analytics";
+import Tokenization from "./pages/Tokenization";
+import Layout from "./components/Layout";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -15,7 +21,22 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index />} />
+          <Route path="/" element={<Landing />} />
+          <Route path="/dashboard" element={<Layout />}>
+            <Route index element={<Dashboard />} />
+          </Route>
+          <Route path="/trading" element={<Layout />}>
+            <Route index element={<Trading />} />
+          </Route>
+          <Route path="/portfolio" element={<Layout />}>
+            <Route index element={<Portfolio />} />
+          </Route>
+          <Route path="/tokenization" element={<Layout />}>
+            <Route index element={<Tokenization />} />
+          </Route>
+          <Route path="/analytics" element={<Layout />}>
+            <Route index element={<Analytics />} />
+          </Route>
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
