@@ -14,11 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
+      ai_sessions: {
+        Row: {
+          created_at: string
+          id: string
+          locale: string
+          messages: Json
+          session_type: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          locale?: string
+          messages?: Json
+          session_type?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          locale?: string
+          messages?: Json
+          session_type?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       alerts: {
         Row: {
           category: string
           created_at: string | null
           id: number
+          is_read: boolean
           message: string
           severity: string
           source_id: number | null
@@ -29,6 +60,7 @@ export type Database = {
           category: string
           created_at?: string | null
           id?: number
+          is_read?: boolean
           message: string
           severity: string
           source_id?: number | null
@@ -39,6 +71,7 @@ export type Database = {
           category?: string
           created_at?: string | null
           id?: number
+          is_read?: boolean
           message?: string
           severity?: string
           source_id?: number | null
@@ -167,6 +200,7 @@ export type Database = {
           description: string
           id: number
           locale: string | null
+          priority: string | null
           status: string | null
           title: string
           updated_at: string | null
@@ -178,6 +212,7 @@ export type Database = {
           description: string
           id?: number
           locale?: string | null
+          priority?: string | null
           status?: string | null
           title: string
           updated_at?: string | null
@@ -189,6 +224,7 @@ export type Database = {
           description?: string
           id?: number
           locale?: string | null
+          priority?: string | null
           status?: string | null
           title?: string
           updated_at?: string | null
@@ -203,6 +239,36 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          full_name: string | null
+          id: string
+          locale: string
+          role: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          locale?: string
+          role?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          locale?: string
+          role?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
       }
       sessions: {
         Row: {
